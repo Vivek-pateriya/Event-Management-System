@@ -24,8 +24,8 @@ function Usermgt() {
   };
 
   const handleUpdateStatusC = (Cid, currentStatus) => {
-    const updatedStatus = currentStatus === "active" ? "deactive" : "active";
-    const obj2 = { Cid, CStatus: updatedStatus };
+    const updatedStatus = currentStatus === "active" ? "inactive" : "active";
+    const obj2 = { Uid: Cid, UStatus: updatedStatus };
 
     axios
       .put("http://localhost:5050/user/toggle", obj2)

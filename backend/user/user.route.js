@@ -91,6 +91,7 @@ UserRoute.get("/getUsercount", (req, res) => {
 });
 UserRoute.put("/toggle", (req, res) => {
   const { Uid, UStatus } = req.body;
+  console.log(Uid, UStatus);
 
   User.updateOne({ Uid: Uid }, { UStatus: UStatus })
     .then((result) => {

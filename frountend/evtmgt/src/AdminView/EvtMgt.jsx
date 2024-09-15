@@ -178,12 +178,14 @@ function EvtMgt() {
         });
     }
   };
-  const handletoggleButton = (Uid, currentStatus) => {
-    const updatedStatus = currentStatus === "active" ? "deactive" : "active";
-    const obj2 = { Uid, status: updatedStatus };
+  const handletoggleButton = (Cid, currentStatus) => {
+    const updatedStatus = currentStatus === 1 ? 0 : 1;
+    console.log("Cid:", Cid, "Status:", updatedStatus);
+
+    const obj2 = { Uid: Cid, UStatus: updatedStatus };
 
     axios
-      .put("http://localhost:9679/customer/toggle", obj2)
+      .put("http://localhost:5050/event/toggle", obj2)
       .then((res) => {
         console.log("Status update response:", res.data);
         handleShowButton();

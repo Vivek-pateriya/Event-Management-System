@@ -115,11 +115,17 @@ eventRouter.route("/searchbyname/:stname").get((req, res) => {
 //   });
 // });
 eventRouter.put("/toggle", (req, res) => {
+  console.log("Request body:", req.body);
   const { uid, UStatus } = req.body;
+  console.log("UID:", uid);
+  console.log("UStatus:", UStatus);
 
   Event.updateOne({ eventid: uid }, { status: UStatus })
     .then((result) => {
       console.log("Update result:", result);
+      if (result.modifiedCount === 0) {
+        console.log("No documents were updated.");
+      }
       res.send("State updated successfully");
     })
     .catch((err) => {
@@ -127,4 +133,5 @@ eventRouter.put("/toggle", (req, res) => {
       res.status(500).send(err);
     });
 });
+
 module.exports = eventRouter;
