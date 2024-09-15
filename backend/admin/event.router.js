@@ -116,11 +116,11 @@ eventRouter.route("/searchbyname/:stname").get((req, res) => {
 // });
 eventRouter.put("/toggle", (req, res) => {
   console.log("Request body:", req.body);
-  const { uid, UStatus } = req.body;
+  const { Uid, UStatus } = req.body;
   console.log("UID:", uid);
   console.log("UStatus:", UStatus);
 
-  Event.updateOne({ eventid: uid }, { status: UStatus })
+  Event.updateOne({ eventid: Uid }, { status: UStatus })
     .then((result) => {
       console.log("Update result:", result);
       if (result.modifiedCount === 0) {
