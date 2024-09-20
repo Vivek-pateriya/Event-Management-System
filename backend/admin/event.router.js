@@ -117,7 +117,7 @@ eventRouter.route("/searchbyname/:stname").get((req, res) => {
 eventRouter.put("/toggle", (req, res) => {
   console.log("Request body:", req.body);
   const { Uid, UStatus } = req.body;
-  console.log("UID:", uid);
+  console.log("UID:", Uid);
   console.log("UStatus:", UStatus);
 
   Event.updateOne({ eventid: Uid }, { status: UStatus })
